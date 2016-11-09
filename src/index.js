@@ -1,4 +1,19 @@
-function hello(name) {
-  console.log(`Hello ${name}`); // eslint-disable-line
-}
-hello('JS World');
+import express from 'express';
+import cors from 'cors';
+
+import fio from './fio';
+
+const app = express();
+
+
+app.use(cors());
+
+app.get('/', (req, res) => {
+  const fullName = req.query.fullname;
+  res.send(fio(fullName));
+});
+
+
+
+app.listen(3000, () => {
+});
